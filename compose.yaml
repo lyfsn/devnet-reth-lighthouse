@@ -5,35 +5,36 @@ services:
     image: ghcr.io/paradigmxyz/reth
     command:
       - node
-      - -vvvv
+      - -vvv
       - --datadir=/execution-data
       - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
       - --addr=${IP_ADDRESS}
-      - --port=50403
+      - --port=30703
       - --http
       - --http.port=8545
-      - --http.addr=${IP_ADDRESS}
+      - --http.addr=0.0.0.0
       - --http.corsdomain=*
       - --http.api=admin,net,eth,web3,debug,trace
       - --ws
-      - --ws.addr=${IP_ADDRESS}
+      - --ws.addr=0.0.0.0
       - --ws.port=8546
       - --ws.api=net,eth
       - --ws.origins=*
       - --nat=extip:${IP_ADDRESS}
       - --authrpc.port=8551
       - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
-      - --authrpc.addr=${IP_ADDRESS}
+      - --authrpc.addr=0.0.0.0
+      - --metrics=0.0.0.0:11201
       - --bootnodes=enode://de18715ae94d2545c70f396feadf3d88da1bb0ad1a845c2b1f6d98f1075ec4c05651f0fb4388f2c256731590636a799243b7d25839848add1efffd1eecf7edf2@88.99.94.109:50303
     volumes:
       - ./execution-data:/execution-data
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "10645:8545" 
-      - "10646:8546" 
-      - "10651:8551" 
-      - "11101:11101" 
-      - "50403:50403"
+      - "10745:8545" 
+      - "10746:8546" 
+      - "10751:8551" 
+      - "11201:11201" 
+      - "30703:30703"
     restart: unless-stopped
 
   beacon:
