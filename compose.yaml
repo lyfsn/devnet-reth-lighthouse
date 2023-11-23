@@ -8,33 +8,33 @@ services:
       - -vvv
       - --datadir=/execution-data
       - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
-      - --addr=${IP_ADDRESS}
-      - --port=30703
+      - --addr=88.99.94.109
+      - --port=30603
       - --http
-      - --http.port=8545
+      - --http.port=8845
       - --http.addr=0.0.0.0
       - --http.corsdomain=*
       - --http.api=admin,net,eth,web3,debug,trace
       - --ws
       - --ws.addr=0.0.0.0
-      - --ws.port=8546
+      - --ws.port=8846
       - --ws.api=net,eth
       - --ws.origins=*
-      - --nat=extip:${IP_ADDRESS}
-      - --authrpc.port=8551
+      - --nat=extip:88.99.94.109
+      - --authrpc.port=8851
       - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
       - --authrpc.addr=0.0.0.0
-      - --metrics=0.0.0.0:11201
+      - --metrics=0.0.0.0:9201
       - --bootnodes=enode://de18715ae94d2545c70f396feadf3d88da1bb0ad1a845c2b1f6d98f1075ec4c05651f0fb4388f2c256731590636a799243b7d25839848add1efffd1eecf7edf2@88.99.94.109:50303
     volumes:
       - ./execution-data:/execution-data
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "10745:8545" 
-      - "10746:8546" 
-      - "10751:8551" 
-      - "11201:11201" 
-      - "30703:30703"
+      - "8845:8845" 
+      - "8846:8846" 
+      - "8851:8851" 
+      - "9201:9201" 
+      - "30603:30603"
     restart: unless-stopped
 
   beacon:
@@ -57,7 +57,7 @@ services:
       - --http-allow-sync-stalled
       - --slots-per-restore-point=32
       - --disable-packet-filter
-      - --execution-endpoints=http://executor:8551
+      - --execution-endpoints=http://executor:8851
       - --jwt-secrets=/el-cl-genesis-data/jwt/jwtsecret
       - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776
       - --subscribe-all-subnets
