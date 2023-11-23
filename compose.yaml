@@ -5,7 +5,7 @@ services:
     image: ghcr.io/paradigmxyz/reth
     command:
       - node
-      - -vvv
+      - -vvvv
       - --datadir=/execution-data
       - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
       - --addr=${IP_ADDRESS}
