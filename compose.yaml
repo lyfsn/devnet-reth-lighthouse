@@ -24,7 +24,6 @@ services:
       - --authrpc.port=8551
       - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
       - --authrpc.addr=${IP_ADDRESS}
-      - --metrics=${IP_ADDRESS}:9001
       - --bootnodes=enode://de18715ae94d2545c70f396feadf3d88da1bb0ad1a845c2b1f6d98f1075ec4c05651f0fb4388f2c256731590636a799243b7d25839848add1efffd1eecf7edf2@88.99.94.109:50303
     volumes:
       - ./execution-data:/execution-data
@@ -33,7 +32,7 @@ services:
       - "10645:8545" 
       - "10646:8546" 
       - "10651:8551" 
-      - "11101:9001" 
+      - "11101:11101" 
       - "50403:50403"
     restart: unless-stopped
 
