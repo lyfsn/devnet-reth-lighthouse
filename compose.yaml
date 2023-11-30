@@ -1,15 +1,17 @@
 version: "3.8"
 
 services:
-  executor:
-    image: ghcr.io/paradigmxyz/reth
+  execution:
+    image: ghcr.io/paradigmxyz/reth:latest
     command:
       - node
-      - -vvvv
+      - -vvv
       - --datadir=/execution-data
       - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
       - --addr=${IP_ADDRESS}
       - --port=50403
+      - --discovery.port=50403
+      - --discovery.addr=0.0.0.0
       - --http
       - --http.port=8545
       - --http.addr=0.0.0.0
@@ -25,20 +27,22 @@ services:
       - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
       - --authrpc.addr=0.0.0.0
       - --metrics=0.0.0.0:9001
-      - --bootnodes=enode://de18715ae94d2545c70f396feadf3d88da1bb0ad1a845c2b1f6d98f1075ec4c05651f0fb4388f2c256731590636a799243b7d25839848add1efffd1eecf7edf2@88.99.94.109:50303
+      - --bootnodes=enode://bd770520db59850aee38a439292ad511fe6051b6c981de66b364c683859f8d0d253e1a5a03aefc72dce557991f7d1c629fc19f04fdcf0db4c92728d90b09f8e9@88.99.94.109:50303
+      - --trusted-peers=enode://bd770520db59850aee38a439292ad511fe6051b6c981de66b364c683859f8d0d253e1a5a03aefc72dce557991f7d1c629fc19f04fdcf0db4c92728d90b09f8e9@88.99.94.109:50303
     volumes:
       - ./execution-data:/execution-data
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "10645:8545" 
-      - "10646:8546" 
-      - "10651:8551" 
-      - "11101:9001" 
+      - "8545:8545" 
+      - "8546:8546" 
+      - "8551:8551" 
+      - "9001:9001" 
       - "50403:50403"
     restart: unless-stopped
 
   beacon:
     image: sigp/lighthouse:v4.5.0
+    user: "root"
     command:
       - lighthouse
       - beacon_node
@@ -57,22 +61,24 @@ services:
       - --http-allow-sync-stalled
       - --slots-per-restore-point=32
       - --disable-packet-filter
-      - --execution-endpoints=http://executor:8551
+      - --execution-endpoints=http://execution:8551
       - --jwt-secrets=/el-cl-genesis-data/jwt/jwtsecret
       - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776
       - --subscribe-all-subnets
+      - --import-all-attestations
       - --metrics
       - --metrics-address=0.0.0.0
       - --metrics-allow-origin=*
       - --metrics-port=5054
-      - --trusted-peers=16Uiu2HAkxAjbNY3VD7fS4w3f6pfk2dnKiAPr6tDQtd2vvUmEX54L
-      - --boot-nodes=enr:-MS4QDAfdwdv39sNGp4RhwyabW-n-bNHMFgjgrPsImZKfibtQAGKg85CqmVKg_jvA7r_7C75tu7lv7CDASsQwboc9QYBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAii_bzHcO9ydFheDTk140o6hvL0tnMTd89PPGnINuuORiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
+      - --trusted-peers=16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
+      - --boot-nodes=enr:-MS4QKjvQWjHjNSlrgJBnwI7j88ULp36kH6FegWreBuiHL0_UGs4EvAxALKLgvKjTFpk6x0zTPyxoXXt0PDeZxlAihgBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAoNhfDA57peBhfKlgRRDYKmjwOUPSPqj97hpWmwycgJdiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
       - --checkpoint-sync-url=http://88.99.94.109:9781
       - --disable-optimistic-finalized-sync
       - --disable-backfill-rate-limiting
       - --genesis-backfill
       - --reconstruct-historic-states
       - --reset-payload-statuses
+      - --disable-peer-scoring
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
@@ -80,9 +86,9 @@ services:
       - "11100:11100/udp"
       - "11100:11100/tcp" 
       - "4300:4000"
-      - "7154:5054"
+      - "7354:5054"
     depends_on:
-      - executor
+      - execution
     restart: unless-stopped
 
   # lighthouse-validator:

@@ -4,7 +4,6 @@ docker run \
   --rm \
   -it \
   -v $(pwd)/execution-data:/execution-data \
-  -v $(pwd)/config-example:/config \
   -v $(pwd)/el-cl-genesis-data:/el-cl-genesis-data \
   ghcr.io/paradigmxyz/reth \
   init \
