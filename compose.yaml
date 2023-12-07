@@ -8,7 +8,7 @@ services:
       - -vvv
       - --datadir=/execution-data
       - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
-      - --addr=${IP_ADDRESS}
+      - --addr=0.0.0.0
       - --port=50403
       - --discovery.port=50403
       - --discovery.addr=0.0.0.0
