@@ -33,11 +33,11 @@ services:
       - ./execution-data:/execution-data
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "12545:8545" 
-      - "12546:8546" 
-      - "12551:8551" 
-      - "1201:9001" 
-      - "52403:50403"
+      - "11645:8545" 
+      - "11646:8546" 
+      - "11651:8551" 
+      - "9601:9001" 
+      - "42403:50403"
     restart: unless-stopped
 
   beacon:
@@ -83,10 +83,10 @@ services:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "13100:11100/udp"
-      - "13100:11100/tcp" 
-      - "5100:4000"
-      - "8254:5054"
+      - "17800:11100/udp"
+      - "17800:11100/tcp" 
+      - "5509:4000"
+      - "5519:5054"
     depends_on:
       - execution
     restart: unless-stopped
