@@ -27,8 +27,8 @@ services:
       - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
       - --authrpc.addr=0.0.0.0
       - --metrics=0.0.0.0:9001
-      - --bootnodes=enode://bd770520db59850aee38a439292ad511fe6051b6c981de66b364c683859f8d0d253e1a5a03aefc72dce557991f7d1c629fc19f04fdcf0db4c92728d90b09f8e9@88.99.94.109:50303
-      - --trusted-peers=enode://bd770520db59850aee38a439292ad511fe6051b6c981de66b364c683859f8d0d253e1a5a03aefc72dce557991f7d1c629fc19f04fdcf0db4c92728d90b09f8e9@88.99.94.109:50303
+      - --bootnodes=enode://30674d1f5fa3cf763c2d991eeaf585db42c45737a4d47aee3653b50ac33947437769e13f04c12bab63d5c2a416d08b2637e6340d13b7d59489f0ac8dae919756@88.99.94.109:50303
+      - --trusted-peers=enode://30674d1f5fa3cf763c2d991eeaf585db42c45737a4d47aee3653b50ac33947437769e13f04c12bab63d5c2a416d08b2637e6340d13b7d59489f0ac8dae919756@88.99.94.109:50303
     volumes:
       - ./execution-data:/execution-data
       - ./el-cl-genesis-data:/el-cl-genesis-data
@@ -91,32 +91,3 @@ services:
       - execution
     restart: unless-stopped
 
-  # lighthouse-validator:
-  #   image: sigp/lighthouse:v4.5.0
-  #   command:
-  #     - lighthouse
-  #     - validator_client
-  #     - --debug-level=info
-  #     - --testnet-dir=/el-cl-genesis-data/custom_config_data
-  #     - --validators-dir=/validator-keys/node-0-keystores/keys
-  #     - --secrets-dir=/validator-keys/node-0-keystores/secrets
-  #     - --init-slashing-protection
-  #     - --http
-  #     - --unencrypted-http-transport
-  #     - --http-address=0.0.0.0
-  #     - --http-port=5042
-  #     - --beacon-nodes=http://lighthouse-beacon:4000
-  #     - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776
-  #     - --metrics
-  #     - --metrics-address=0.0.0.0
-  #     - --metrics-allow-origin=*
-  #     - --metrics-port=5064
-  #   volumes:
-  #     - ./el-cl-genesis-data:/el-cl-genesis-data
-  #     - ./validator-keys:/validator-keys
-  #   ports:
-  #     - "7042:5042"
-  #     - "7064:5064"
-  #   depends_on:
-  #     - lighthouse-beacon
-  #   restart: unless-stopped
