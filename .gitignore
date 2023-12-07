@@ -12,6 +12,5 @@ el-cl-genesis-data
 
 *.tar.gz
 *-data
-validator-keys
 geth
 logs
