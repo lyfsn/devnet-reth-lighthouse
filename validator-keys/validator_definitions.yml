@@ -3,10 +3,10 @@
   voting_public_key: "0xa9772b25d7955954b3bfc33fa073b8bb7036596a3595b0903b340f92a4404fab29a28759254f52ce7c34d28e3f7f13fd"
   type: web3signer
   url: "http://88.99.94.109:49200"
-  root_certificate_path: null
-  request_timeout_ms: null
-  client_identity_path: null
-  client_identity_password: null
-  # root_certificate_path: ./mycertificate.pem
-  # client_identity_path: ./mycertificate.p12
-  # client_identity_password: ""
+  # root_certificate_path: null
+  # request_timeout_ms: null
+  # client_identity_path: null
+  # client_identity_password: null
+  root_certificate_path: ./mycertificate.pem
+  client_identity_path: ./mycertificate.p12
+  client_identity_password: ""
