@@ -3,3 +3,6 @@
   voting_public_key: "0xa9772b25d7955954b3bfc33fa073b8bb7036596a3595b0903b340f92a4404fab29a28759254f52ce7c34d28e3f7f13fd"
   type: web3signer
   url: "http://88.99.94.109:49200"
+  root_certificate_path: 
+  client_identity_path: 
+  client_identity_password: 
