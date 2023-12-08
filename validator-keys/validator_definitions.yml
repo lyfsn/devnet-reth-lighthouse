@@ -1,12 +1,16 @@
 ---
 - enabled: true
+  voting_public_key: "0x914dc0bb6af111bc9021887ca4dfb27cc2063c9ebd2be133754d30ca18fa8698787005538f556bd94867cc1c5f7b817a"
+  description: "0x914dc0bb6af111bc9021887ca4dfb27cc2063c9ebd2be133754d30ca18fa8698787005538f556bd94867cc1c5f7b817a"
+  type: local_keystore
+  voting_keystore_path: /validator-keys/node-2-keystores/keys/0x914dc0bb6af111bc9021887ca4dfb27cc2063c9ebd2be133754d30ca18fa8698787005538f556bd94867cc1c5f7b817a/voting-keystore.json
+  voting_keystore_password_path: /validator-keys/node-2-keystores/secrets/0x914dc0bb6af111bc9021887ca4dfb27cc2063c9ebd2be133754d30ca18fa8698787005538f556bd94867cc1c5f7b817a
+- enabled: true
   voting_public_key: "0xa9772b25d7955954b3bfc33fa073b8bb7036596a3595b0903b340f92a4404fab29a28759254f52ce7c34d28e3f7f13fd"
   type: web3signer
-  url: "http://88.99.94.109:49201"
-  # root_certificate_path: null
-  # request_timeout_ms: null
-  # client_identity_path: null
-  # client_identity_password: null
-  root_certificate_path: ./mycertificate.pem
-  client_identity_path: ./mycertificate.p12
-  client_identity_password: ""
+  url: "http://88.99.94.109:49200"
+  root_certificate_path: null
+  request_timeout_ms: null
+  client_identity_path: null
+  client_identity_password: null
+  
