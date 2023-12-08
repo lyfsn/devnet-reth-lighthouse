@@ -99,8 +99,7 @@ services:
       - validator_client
       - --debug-level=info
       - --testnet-dir=/el-cl-genesis-data/custom_config_data
-      - --validators-dir=/validator_keys/
-      - --secrets-dir=/validator_keys/secrets
+      - --validators-dir=/validator_keys
       - --init-slashing-protection
       - --http
       - --unencrypted-http-transport
