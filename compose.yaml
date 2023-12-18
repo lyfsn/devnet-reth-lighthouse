@@ -81,7 +81,6 @@ services:
       - --genesis-backfill
       - --reconstruct-historic-states
       - --reset-payload-statuses
-      - --disable-peer-scoring
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
