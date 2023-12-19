@@ -70,17 +70,9 @@ services:
       - --metrics-address=0.0.0.0
       - --metrics-allow-origin=*
       - --metrics-port=5054
-      - --trusted-peers=16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
-      - --boot-nodes=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
       - --libp2p-addresses=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
       - --enable-private-discovery=true
       - --target-peers=16
-      - --checkpoint-sync-url=http://88.99.94.109:9781
-      - --disable-optimistic-finalized-sync
-      - --disable-backfill-rate-limiting
-      - --genesis-backfill
-      - --reconstruct-historic-states
-      - --reset-payload-statuses
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
